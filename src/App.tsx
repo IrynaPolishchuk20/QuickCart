@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react'
+import './App.scss'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  thumbnail: string;
+  rating: number;
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching products:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div>Loading...</div>
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    < >
+        <main className="app-container">
+          <div className="products-list">
+            {products.map(product => (
+              <div key={product.id} className="product-card">
+                <img
+                  src={product.thumbnail}
+                  alt={product.title}
+                  className="product-image"
+                />
+                <h3 className="product-title">{product.title}</h3>
+                <p className="product-price">Price: ${product.price.toFixed(2)}</p>
+                <p className="product-rating">
+                  Rating: {product.rating}
+                </p>
+                <div>
+                  <button className="buy">Buy</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </main>
     </>
   )
 }
 
-export default App
+export default App;

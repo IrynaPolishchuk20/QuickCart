@@ -3,6 +3,8 @@ import './App.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './components/Header/Header'
 import Pagination from './components/Pagination/Pagination'
+import ProductList from './components/ProductList/ProductList'
+
 
 interface Product {
   id: number;
@@ -53,30 +55,11 @@ function App() {
   return (
     <>
       <Header />
-        <main className='app-container'>
-          <div className='products-list'>
-            {currentProducts.map(product => (
-              <div key={product.id} className='product-card'>
-                <img
-                  src={product.thumbnail}
-                  alt={product.title}
-                  className='product-image'
-                />
-                <h3 className='product-title'>{product.title}</h3>
-                <p className='product-price'>Price: ${product.price.toFixed(2)}</p>
-                <p className='product-rating'>⭐ {product.rating}</p>
-                <div>
-                  <button className='buy'>Buy</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </main>
-
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={(page) => setCurrentPage(page)}
+      <ProductList products={currentProducts} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={(page) => setCurrentPage(page)}
         />
     </>
   )

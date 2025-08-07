@@ -1,0 +1,54 @@
+.footer {
+  padding: 20px;
+  background-color:  #fdc951;
+  text-align: center;
+  color:  #252525;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 16px;
+}
+
+.social-icons {
+  margin-top: 10px;
+
+  .icon {
+    font-size: 28px;
+    margin: 0 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 
+      color 0.3s ease,
+      transform 0.3s ease;
+
+    &:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    &.facebook {
+      color: #4267B2;
+
+      &:hover {
+        color: lighten(#4267B2, 15%);
+      }
+    }
+
+    &.telegram {
+      color: #0088cc;
+
+      &:hover {
+        color: lighten(#0088cc, 15%);
+      }
+    }
+
+    &.instagram {
+      color: #C13584;
+
+      &:hover {
+        color: lighten(#C13584, 15%);
+      }
+    }
+  }
+}

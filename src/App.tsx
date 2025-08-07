@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './components/Header/Header'
 import Pagination from './components/Pagination/Pagination'
 import ProductList from './components/ProductList/ProductList'
+import Footer from './components/Footer/Footer'
 
 
 interface Product {
@@ -61,6 +62,7 @@ function App() {
         totalPages={totalPages}
         onPageChange={(page) => setCurrentPage(page)}
         />
+      <Footer />
     </>
   )
 }

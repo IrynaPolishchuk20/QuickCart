@@ -1,0 +1,71 @@
+.notfound-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 16px;
+
+  .notfound-card {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    max-width: 448px;
+    text-align: center;
+    position: relative;
+
+    .notfound-badge {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #facc15;
+      color: white;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .notfound-image {
+      width: 128px;
+      height: 128px;
+      margin: 32px auto 0;
+      opacity: 0.8;
+    }
+
+    .notfound-title {
+      margin-top: 24px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .notfound-text {
+      margin-top: 8px;
+      color: #4b5563;
+    }
+
+    .notfound-button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 24px;
+      background-color: #facc15;
+      color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #eab308;
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom'
 import './Header.scss'
 
 export default function Header(){
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
-        <a className="navbar-brand fw-bold" href="#">
+        <Link className="navbar-brand fw-bold" to="/">
           🛍️ QuickCart
-        </a>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -23,14 +24,14 @@ export default function Header(){
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Головна
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/categories">
                 Каталог
-              </a>
+              </Link>
             </li>
           </ul>
 

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import ProductList from "../ProductList/ProductList";
 import Pagination from "../../components/Pagination/Pagination";
+
 
 interface Product {
   id: number;
@@ -53,14 +52,12 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <ProductList products={currentProducts} />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={(page) => setCurrentPage(page)}
       />
-      <Footer />
     </>
   );
 }

@@ -51,12 +51,8 @@
   &:hover {
     background-color: #f6bb34;
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-
-  .category-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
+    box-shadow: 1px 6px 12px rgba(0,0,0,0.15);
+    text-decoration: underline;
   }
 
   .category-name {

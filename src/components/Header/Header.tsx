@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import './Header.scss'
 
 export default function Header(){
@@ -24,14 +24,25 @@ export default function Header(){
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+               <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+                end
+              >
                 Головна
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/categories">
+              <NavLink
+                to="/categories"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
                 Каталог
-              </Link>
+              </NavLink>
             </li>
           </ul>
 

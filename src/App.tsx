@@ -10,10 +10,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}> 
-        <Route index element={<Home/>} />
-        <Route path="/categories" element={<CategoriesList />} />
-        <Route path="*" element={<NotFound />} />
+          <Route index element={<Home/>} />
+          <Route path="/categories" element={<CategoriesList />} />
         </Route>
+          <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   )

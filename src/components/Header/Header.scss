@@ -34,7 +34,8 @@
       left: 0;
     }
 
-    &:hover {
+    &:hover,
+    &.active {
       color: #f86001 !important;
 
       &::after {

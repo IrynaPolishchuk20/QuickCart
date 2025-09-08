@@ -1,7 +1,9 @@
 import { NavLink, Link } from 'react-router-dom'
 import './Header.scss'
+import { useCart } from '../../context/CartContext';
 
 export default function Header(){
+  const { cart } = useCart();
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
@@ -58,9 +60,9 @@ export default function Header(){
             </button>
           </form>
 
-          <button className="btn btn-warning">
-            🛒 Кошик (0)
-          </button>
+          <Link to="/cart" className="btn btn-warning">
+            🛒 ({cart.reduce((sum, item) => sum + (item.quantity ?? 1), 0)})
+          </Link>
         </div>
       </div>
     </nav>

@@ -1,6 +1,7 @@
 import './CategoriesProduct.scss'
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useCart } from '../../context/CartContext';
 
 
 interface Product {
@@ -17,32 +18,33 @@ interface ProductsResponse {
 }
 
 export default function CategoriesProduct() {
-  const { categoryName } = useParams<{ categoryName: string }>();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { categoryName } = useParams<{ categoryName: string }>()
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+  const { addToCart } = useCart()
 
   useEffect(() => {
     const fetchProducts = async () => {
-      if (!categoryName) return;
+      if (!categoryName) return
 
       try {
-        const res = await fetch("https://dummyjson.com/products?limit=300");
-        const data: ProductsResponse = await res.json();
+        const res = await fetch("https://dummyjson.com/products?limit=300")
+        const data: ProductsResponse = await res.json()
 
         // Порівнюємо точні назви категорій з API
-        const filtered = data.products.filter(p => p.category === categoryName);
-        setProducts(filtered);
+        const filtered = data.products.filter(p => p.category === categoryName)
+        setProducts(filtered)
       } catch (err) {
-        console.error(err);
+        console.error(err)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    fetchProducts();
-  }, [categoryName]);
+    fetchProducts()
+  }, [categoryName])
 
-  if (loading) return <div>Завантаження...</div>;
+  if (loading) return <div>Завантаження...</div>
 
   return (
    <div className="category-page container">
@@ -66,7 +68,16 @@ export default function CategoriesProduct() {
                 <p className='product-price'>Price: ${product.price.toFixed(2)}</p>
                 <p className='product-rating'>⭐ {product.rating}</p>
                 <div>
-                <button className='buy'>Buy</button>
+                <button className='buy'
+                 onClick={() => addToCart({
+                    id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    thumbnail: product.thumbnail,
+                  })
+                }>
+                  Buy
+                </button>
                 </div>
             </div>
             ))}

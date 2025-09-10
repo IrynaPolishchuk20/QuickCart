@@ -5,7 +5,7 @@
   padding-bottom: 15px;
 
   .page-item .page-link {
-    background-color: #fdc951;
+    background-color: var(--color_bg);
     color: #252525;
     border: 1px solid #252525;
     padding: 8px 14px;
@@ -15,7 +15,7 @@
   }
 
   .page-item .page-link:hover:not(:disabled) {
-    background-color: #f86001;
+    background-color: var(--color_bg_hover);
     color: #fff;
     cursor: pointer;
   }
@@ -26,8 +26,8 @@
   }
 
   .page-item.active .page-link {
-    background-color: #f86001;
+    background-color: var(--color_bg_hover);
     color: #fff;
-    border-color: #f86001;
+    border-color: var(--color_bg_hover);
   }
 }

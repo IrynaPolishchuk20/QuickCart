@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #fdc951; 
+  background-color: var(--color_bg); 
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.5);
 
   .navbar-brand {
@@ -8,7 +8,7 @@
     transition: color 0.3s;
 
     &:hover {
-      color: #f86001; 
+      color: var(--color_bg_hover); 
     }
 
     svg {
@@ -27,7 +27,7 @@
       display: block;
       width: 0;
       height: 2px;
-      background: #f86001;
+      background:var(--color_bg_hover);
       transition: width 0.3s;
       position: absolute;
       bottom: 0;
@@ -36,7 +36,7 @@
 
     &:hover,
     &.active {
-      color: #f86001 !important;
+      color: var(--color_bg_hover) !important;
 
       &::after {
         width: 100%;
@@ -45,7 +45,7 @@
   }
 
   .form-control {
-    background-color: #fdc951;
+    background-color: var(--color_bg);
     border: 1px solid #3a3939;
     color: #252525;
 
@@ -54,7 +54,7 @@
     }
 
     &:focus {
-      border-color: #f86001;
+      border-color: var(--color_bg_hover);
       box-shadow: 0 0 0 3px rgba(255, 19, 7, 0.25);
     }
   }
@@ -63,10 +63,10 @@
     font-weight: 500;
     transition: background-color 0.3s;
     border: 1px solid #252525;
-    background-color: #edaa0e;
+    background-color: var(--color_bg);
 
     &:hover {
-      background-color: #f86001;
+      background-color: var(--color_bg_hover);
       border: none;
       color: #fff;
     }
@@ -81,7 +81,7 @@
     border-color: #252525;
 
       &:hover{
-        background-color: #f86001;
+        background-color: var(--color_bg_hover);
         border: none;
         color: #fff;
       }

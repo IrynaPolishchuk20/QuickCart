@@ -68,7 +68,7 @@
         }
 
         .buy {
-            background-color: #ffc107;
+            background-color: var(--color_bg);
             padding: 8px 16px;
             border-radius: 8px;
             font-weight: 500;
@@ -77,7 +77,7 @@
             transition: background-color 0.3s ease;
 
                 &:hover{
-                    background-color: #f86001;
+                    background-color:var(--color_bg_hover);
                     border: none;
                     color: #fff;
                 }

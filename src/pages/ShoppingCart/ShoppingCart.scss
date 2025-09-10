@@ -60,7 +60,7 @@
       .quantity-control {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 5px;
         margin-bottom: 5px;
 
         button {
@@ -82,8 +82,8 @@
 
     .cart-item-remove {
       position: absolute;
-      top: 5px;
-      right: 5px;
+      top: -10px;
+      right: -10px;
       background-color: #ff4d4f;
       border: none;
       color: white;

@@ -45,27 +45,27 @@
       margin-top: 24px;
       font-size: 24px;
       font-weight: 600;
-      color: #1f2937;
+      color: var(--color_text);
     }
 
     .notfound-text {
       margin-top: 8px;
-      color: #4b5563;
+      color: var(--color_text);
     }
 
     .notfound-button {
       display: inline-block;
       margin-top: 24px;
       padding: 12px 24px;
-      background-color: #facc15;
-      color: white;
+      background-color: var(--color_bg);
+      color: var(--color_text);
       border-radius: 16px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-decoration: none;
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #eab308;
+        background-color: var(--color_bg_hover);
       }
     }
   }

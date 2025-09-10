@@ -34,8 +34,8 @@
 
 /* Карточка категорії */
 .category-card {
-  background-color:#f6ca63;
-  color: #333333;
+  background-color:var(--color_bg);
+  color: var(--color_text);
   padding: 20px;
   border-radius: 16px;
   text-align: center;
@@ -50,7 +50,7 @@
   text-decoration: none;
 
   &:hover {
-    background-color: #f6bb34;
+    background-color: var(--color_bg_hover);
     transform: translateY(-5px) scale(1.05);
     box-shadow: 1px 6px 12px rgba(0,0,0,0.15);
     text-decoration: underline;

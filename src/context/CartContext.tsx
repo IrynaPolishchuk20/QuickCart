@@ -26,7 +26,7 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<Product[]>([])
 
   const addToCart = (product: Product) => {
     setCart(prev => {
@@ -38,8 +38,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       } else {
         return [...prev, { ...product, quantity: 1 }];
       }
-    });
-  };
+    })
+  }
 
   function removeFromCart(id: number) {
     setCart(prevCart =>
@@ -50,14 +50,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             : []
           : [item]
       )
-    );
+    )
   }
 
   function deleteFromCart(id: number) {
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
+    setCart(prevCart => prevCart.filter(item => item.id !== id))
   }
 
-  const clearCart = () => setCart([]);
+  const clearCart = () => setCart([])
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, deleteFromCart }}>

@@ -6,6 +6,7 @@ import CategoriesList from './pages/CategoriesList/CategoriesList'
 import CategoriesProduct from './pages/CategoriesProduct/CategoriesProduct'
 import Layout from './layout/Layout'
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart'
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
 import { CartProvider } from './context/CartContext'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="categories" element={<CategoriesList />} />
             <Route path="categories/:categoryName" element={<CategoriesProduct />} />
             <Route path="cart" element={<ShoppingCart />} />
+            <Route path="checkout" element={<CheckoutPage/>} />
           </Route>
             <Route path="*" element={<NotFound />} />
         </Routes>

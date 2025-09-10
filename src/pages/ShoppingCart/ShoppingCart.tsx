@@ -1,9 +1,10 @@
 import './ShoppingCart.scss'
 import { useCart } from "../../context/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ShoppingCart() {
-  const { cart, addToCart, removeFromCart, clearCart, deleteFromCart } = useCart()
+  const { cart, addToCart, removeFromCart, clearCart } = useCart()
+  const navigate = useNavigate();
 
   const total = cart.reduce(
     (sum, item) => sum + (item.price * (item.quantity ?? 1)),
@@ -54,7 +55,7 @@ export default function ShoppingCart() {
 
             <button
               className="cart-item-remove"
-              onClick={() => deleteFromCart(item.id)}
+              onClick={() => removeFromCart(item.id)}
             >
               ×
             </button>
@@ -70,7 +71,7 @@ export default function ShoppingCart() {
           </button>
           <button
             className="checkout-btn"
-            onClick={() => alert("Переходимо до оформлення замовлення")}
+            onClick={() => navigate("/checkout")}
           >
             Оформити замовлення
           </button>

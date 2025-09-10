@@ -3,7 +3,7 @@ import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 export default function ShoppingCart() {
-  const { cart, addToCart, removeFromCart, clearCart } = useCart()
+  const { cart, addToCart, removeFromCart, clearCart, deleteFromCart } = useCart()
 
   const total = cart.reduce(
     (sum, item) => sum + (item.price * (item.quantity ?? 1)),
@@ -54,7 +54,7 @@ export default function ShoppingCart() {
 
             <button
               className="cart-item-remove"
-              onClick={() => removeFromCart(item.id)}
+              onClick={() => deleteFromCart(item.id)}
             >
               ×
             </button>

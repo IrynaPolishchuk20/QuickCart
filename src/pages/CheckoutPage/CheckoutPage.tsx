@@ -4,27 +4,36 @@ import { useCart } from "../../context/CartContext";
 import Button from "@mui/material/Button";
 import OrderModal from "../../components/OrderModal/OrderModal";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { checkoutSchema } from '../../validation/validation';
+import type { CheckoutFormValues } from '../../validation/validation';
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useCart()
   const [openModal, setOpenModal] = useState<boolean>(false)
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+
+  const { register, handleSubmit, formState: { errors } } = useForm<CheckoutFormValues>({
+    resolver: yupResolver(checkoutSchema),
+    defaultValues: { payment: "cash" }
+  });
 
   const total = cart.reduce(
     (sum, item) => sum + item.price * (item.quantity ?? 1),
     0
   )
 
-  const handleCheckout = () => {
-    clearCart();      // очищаємо кошик
-    setOpenModal(true); // відкриваємо модалку
+  const onSubmit = (data: CheckoutFormValues) => {
+    console.log("Form data:", data);
+    clearCart();
+    setOpenModal(true);
   }
 
   const handleModalClose = () => {
     setOpenModal(false);
     navigate("/");      // перекидаємо на головну сторінку
-  };
-
+  }
 
   return (
     <div className="checkout-container container">
@@ -73,65 +82,148 @@ export default function CheckoutPage() {
       </section>
 
       {/* Дані покупця */}
-      <section className="checkout-form">
-        <h2 className="section-title">Дані покупця</h2>
-        <form className="form-grid">
-          <input type="text" placeholder="Ім’я" />
-          <input type="text" placeholder="Прізвище" />
-          <input type="email" placeholder="Email" />
-          <input type="tel" placeholder="Телефон" />
-          <input type="text" placeholder="Місто" />
-          <input type="text" placeholder="Поштовий індекс" />
-          <input type="text" placeholder="Адреса Нової Пошти" />
-        </form>
-      </section>
-
-      {/* Оплата */}
-      <section className="checkout-payment">
-        <h2 className="section-title">Спосіб оплати</h2>
-        <div className="payment-options">
-          <label>
-            <input type="radio" name="payment" defaultChecked /> Готівка при
-            отриманні
-          </label>
-          <label>
-            <input type="radio" name="payment" /> Картка онлайн
-          </label>
-        </div>
-      </section>
-
-      {/* Підсумок */}
-      <section className="checkout-summary">
-        <div className="summary-total">
-          <span>Загальна сума:</span>
-          <span> ${total.toFixed(2)} </span>
+      <form className="form-grid" onSubmit={handleSubmit(onSubmit)}>
+        <div className="form-field">
+          <input 
+            type="text" 
+            placeholder="Ім’я" 
+            {...register("firstName")} 
+            className={errors.firstName ? "input error-input" : "input"}
+          />
+          {errors.firstName && (
+            <span className="error-message">{errors.firstName.message}</span>
+          )}
         </div>
 
-        <Button  
-          variant="contained" 
-          onClick={handleCheckout}
-           sx={{
-            backgroundColor: "#28a745",      
-            color: "#fff",                   
-            padding: "12px 24px",
-            borderRadius: "8px",
-            fontSize: "16px",
-            textTransform: "capitalize",      
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)", 
-            transition: "background-color 0.3s ease, transform 0.2s ease",
-            '&:hover': {
-              backgroundColor: "#218838",   
-              transform: "translateY(-2px)", 
-            },
-            '@media (max-width:768px)': {
-              width: "100%",               
-              fontSize: "14px", 
-            }
-          }}
-        >
-          Підтвердити замовлення
-        </Button>
-      </section>
+        <div className="form-field">
+          <input 
+            type="text" 
+            placeholder="Прізвище" 
+            {...register("lastName")} 
+            className={errors.lastName ? "input error-input" : "input"}
+          />
+          {errors.lastName && (
+            <span className="error-message">{errors.lastName.message}</span>
+          )}
+        </div>
+
+        <div className="form-field">
+          <input 
+            type="email" 
+            placeholder="Email" 
+            {...register("email")}
+            className={errors.email ? "input error-input" : "input"} 
+          />
+          {errors.email && (
+            <span className="error-message">{errors.email.message}</span>
+          )}
+        </div>
+
+        <div className="form-field">
+          <input 
+            type="tel" 
+            placeholder="Телефон" 
+            {...register("phone")} 
+            className={errors.phone ? "input error-input" : "input"}
+          />
+          {errors.phone && (
+            <span className="error-message">{errors.phone.message}</span>
+          )}
+        </div>
+
+        <div className="form-field">
+          <input 
+            type="text" 
+            placeholder="Місто" 
+            {...register("city")} 
+            className={errors.city ? "input error-input" : "input"}
+          />
+          {errors.city && (
+            <span className="error-message">{errors.city.message}</span>
+          )}
+        </div>
+
+        <div className="form-field">
+          <input 
+            type="text" 
+            placeholder="Поштовий індекс" 
+            {...register("postalCode")} 
+            className={errors.postalCode ? "input error-input" : "input"}
+          />
+          {errors.postalCode && (
+            <span className="error-message">{errors.postalCode.message}</span>
+          )}
+        </div>
+
+        <div className="form-field">
+          <input 
+            type="text" 
+            placeholder="Адреса Нової Пошти" 
+            {...register("address")} 
+            className={errors.address ? "input error-input" : "input"}
+          />
+          {errors.address && (
+            <span className="error-message">{errors.address.message}</span>
+          )}
+        </div>
+
+        <section className="checkout-payment">
+          <h2 className="section-title">Спосіб оплати</h2>
+          <div className="payment-options">
+            <label>
+              <input 
+                type="radio" 
+                value="cash" 
+                {...register("payment")} 
+              />
+              Готівка при отриманні
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                value="card" 
+                {...register("payment")} 
+              />
+              Картка онлайн
+            </label>
+          </div>
+          {errors.payment && (
+            <span className="error-message">{errors.payment.message}</span>
+          )}
+        </section>
+
+        <section className="checkout-summary">
+          <div className="summary-total">
+            <span>Загальна сума:</span>
+            <span> ${total.toFixed(2)} </span>
+          </div>
+
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{
+              backgroundColor: "#28a745",
+              color: "#fff",
+              padding: "12px 24px",
+              borderRadius: "8px",
+              fontSize: "16px",
+              textTransform: "capitalize",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
+              transition: "background-color 0.3s ease, transform 0.2s ease",
+              '&:hover': {
+                backgroundColor: "#218838",
+                transform: "translateY(-2px)",
+              },
+              '@media (max-width:768px)': {
+                width: "100%",
+                fontSize: "14px",
+              }
+            }}
+          >
+            Підтвердити замовлення
+          </Button>
+        </section>
+      </form>
 
       <OrderModal
         open={openModal}

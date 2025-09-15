@@ -14,7 +14,7 @@ interface CartContextType {
   addToCart: (product: Product) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
-  deleteFromCart: (id: number) => void; // додайте цей рядок
+  deleteFromCart: (id: number) => void; 
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -22,8 +22,8 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) throw new Error("useCart must be used within CartProvider");
-  return context;
-};
+  return context
+}
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Product[]>([])

@@ -8,10 +8,12 @@ import Layout from './layout/Layout'
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart'
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
 import { CartProvider } from './context/CartContext'
+import { SearchProvider } from './context/SearchContext'
 
 function App() {
   return (
     <CartProvider>
+      <SearchProvider>
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}> 
@@ -24,6 +26,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+      </SearchProvider>
     </CartProvider>
   )
 }

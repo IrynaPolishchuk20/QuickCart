@@ -1,9 +1,16 @@
 import { NavLink, Link } from 'react-router-dom'
 import './Header.scss'
 import { useCart } from '../../context/CartContext';
+import { useContext } from 'react';
+import { SearchContext } from '../../context/SearchContext';
 
 export default function Header(){
-  const { cart } = useCart();
+  const { cart } = useCart()
+  const { query, setQuery } = useContext(SearchContext);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+  }
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
@@ -48,16 +55,15 @@ export default function Header(){
             </li>
           </ul>
 
-          <form className="d-flex me-3" role="search">
+          <form className="d-flex me-3" role="search" onSubmit={handleSubmit}>
             <input
               className="form-control me-2"
               type="search"
               placeholder="Пошук..."
               aria-label="Пошук"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <button className="btn btn-outline-light search" type="submit">
-              Пошук
-            </button>
           </form>
 
           <Link to="/cart" className="btn btn-warning">

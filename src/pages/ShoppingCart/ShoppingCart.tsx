@@ -3,13 +3,13 @@ import { useCart } from "../../context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function ShoppingCart() {
-  const { cart, addToCart, removeFromCart, clearCart, deleteFromCart } = useCart();
-  const navigate = useNavigate();
+  const { cart, addToCart, removeFromCart, clearCart, deleteFromCart } = useCart()
+  const navigate = useNavigate()
 
   const total = cart.reduce(
     (sum, item) => sum + (item.price * (item.quantity ?? 1)),
     0
-  );
+  )
 
   if (cart.length === 0) {
     return (
@@ -78,5 +78,5 @@ export default function ShoppingCart() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -21,6 +21,12 @@
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
   }
 
+  .card-link {
+    text-decoration: none; 
+    color: inherit;        
+    display: block;       
+  }
+
   .product-image {
     width: 100%;
     height: 180px;
@@ -38,6 +44,7 @@
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 8px;
+    color: var(--color_text);
   }
 
   .product-price {
@@ -48,7 +55,7 @@
 
   .product-rating {
     font-size: 14px;
-    color: #555;
+    color: var(--color_text);
     margin-bottom: 12px;
   }
 

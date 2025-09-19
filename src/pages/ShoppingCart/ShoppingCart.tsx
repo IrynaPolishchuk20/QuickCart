@@ -13,9 +13,9 @@ export default function ShoppingCart() {
 
   if (cart.length === 0) {
     return (
-      <div className="cart-empty">
+      <div className="cart-empty container">
+        <Link to="/" className="back-link">← Повернутися до товарів</Link>
         <h2>Кошик порожній</h2>
-        <Link to="/">← Повернутися до товарів</Link>
       </div>
     )
   }

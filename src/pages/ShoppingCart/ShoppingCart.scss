@@ -8,12 +8,16 @@
     margin-bottom: 20px;
 
     .back-link {
-      text-decoration: none;
-      color: #007bff;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 15px;
+        text-decoration: none;
+        color: var(--color_text);
+        font-size: 16px;
 
-      &:hover {
-        text-decoration: underline;
-      }
+        &:hover {
+            text-decoration: underline;
+        }
     }
   }
 
@@ -152,5 +156,17 @@
 
   h2 {
     margin-bottom: 20px;
+  }
+  .back-link {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 15px;
+      text-decoration: none;
+      color: var(--color_text);
+      font-size: 16px;
+
+      &:hover {
+          text-decoration: underline;
+      }
   }
 }

@@ -44,7 +44,7 @@ export default function CategoriesProduct() {
     fetchProducts()
   }, [categoryName])
 
-  if (loading) return <div>Завантаження...</div>
+  if (loading) return <div>Loading...</div>
 
   return (
    <div className="category-page container">

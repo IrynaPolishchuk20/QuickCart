@@ -11,6 +11,7 @@ export default function Header(){
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
   }
+  
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">

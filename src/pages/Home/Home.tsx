@@ -1,6 +1,7 @@
 import './Home.scss'
 import { useEffect, useState, useContext } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 import { useCart } from "../../context/CartContext";
 import type { Product as CartProduct } from "../../context/CartContext";
@@ -68,14 +69,16 @@ export default function Home() {
         <div className='products-list'>
           {currentProducts.map(product => (
             <div key={product.id} className='product-card'>
-              <img
-                src={product.thumbnail}
-                alt={product.title}
-                className='product-image'
-              />
-              <h3 className='product-title'>{product.title}</h3>
-              <p className='product-price'>Price: ${product.price.toFixed(2)}</p>
-              <p className='product-rating'>⭐ {product.rating}</p>
+              <Link to={`/product/${product.id}`} className="card-link">
+                <img
+                  src={product.thumbnail}
+                  alt={product.title}
+                  className='product-image'
+                />
+                <h3 className='product-title'>{product.title}</h3>
+                <p className='product-price'>Price: ${product.price.toFixed(2)}</p>
+                <p className='product-rating'>⭐ {product.rating}</p>
+              </Link>
               <div>
                 <button
                   className='buy'

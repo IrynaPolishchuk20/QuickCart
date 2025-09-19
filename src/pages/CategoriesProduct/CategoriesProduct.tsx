@@ -49,8 +49,8 @@ export default function CategoriesProduct() {
   return (
    <div className="category-page container">
         <div className="category-header">
-        <h2>Товари категорії: {categoryName}</h2>
-        <Link to="/categories" className="back-link">← Назад до категорій</Link>
+          <h2>Товари категорії: {categoryName}</h2>
+          <Link to="/categories" className="back-link">← Назад до категорій</Link>
         </div>
 
         {products.length === 0 ? (
@@ -59,25 +59,28 @@ export default function CategoriesProduct() {
         <div className='products-list'>
             {products.map(product => (
             <div key={product.id} className='product-card'>
+              <Link to={`/product/${product.id}`} className="card-link">
                 <img
-                src={product.thumbnail}
-                alt={product.title}
-                className='product-image'
+                  src={product.thumbnail}
+                  alt={product.title}
+                  className='product-image'
                 />
                 <h3 className='product-title'>{product.title}</h3>
                 <p className='product-price'>Price: ${product.price.toFixed(2)}</p>
                 <p className='product-rating'>⭐ {product.rating}</p>
+              </Link>  
                 <div>
-                <button className='buy'
-                 onClick={() => addToCart({
-                    id: product.id,
-                    title: product.title,
-                    price: product.price,
-                    thumbnail: product.thumbnail,
-                  })
-                }>
-                  Buy
-                </button>
+                  <button className='buy'
+                  onClick={() => addToCart({
+                      id: product.id,
+                      title: product.title,
+                      price: product.price,
+                      thumbnail: product.thumbnail,
+                    })
+                  }
+                  >
+                    Buy
+                  </button>
                 </div>
             </div>
             ))}

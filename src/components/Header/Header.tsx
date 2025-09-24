@@ -4,9 +4,9 @@ import { useCart } from '../../context/CartContext';
 import { useContext } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 
-export default function Header(){
+export default function Header() {
   const { cart } = useCart()
-  const { query, setQuery } = useContext(SearchContext);
+  const { query, setQuery } = useContext(SearchContext)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -15,10 +15,7 @@ export default function Header(){
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
-        <Link className="navbar-brand fw-bold" to="/">
-          🛍️ QuickCart
-        </Link>
-
+        {/* Тогглер */}
         <button
           className="navbar-toggler"
           type="button"
@@ -27,14 +24,21 @@ export default function Header(){
           aria-controls="navbarContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
-        >
+          >
           <span className="navbar-toggler-icon"></span>
-        </button>
 
+          {/* Бренд */}
+        </button>
+        <Link className="navbar-brand fw-bold" to="/">
+          🛍️ QuickCart
+        </Link>
+
+
+        {/* Меню (колапс) */}
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
             <li className="nav-item">
-               <NavLink
+              <NavLink
                 to="/"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
@@ -66,14 +70,13 @@ export default function Header(){
               onChange={(e) => setQuery(e.target.value)}
             />
           </form>
-
-          <Link to="/cart" className="btn btn-warning">
-            🛒 ({cart.reduce((sum, item) => sum + (item.quantity ?? 1), 0)})
-          </Link>
         </div>
+
+        {/* Кошик завжди видимий */}
+        <Link to="/cart" className="btn btn-warning cart-btn">
+          🛒 ({cart.reduce((sum, item) => sum + (item.quantity ?? 1), 0)})
+        </Link>
       </div>
     </nav>
   )
 }
-
-
